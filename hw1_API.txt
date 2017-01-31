@@ -1,0 +1,46 @@
+Alt-Svc ->quic=":443"; ma=2592000; v="35,34"
+	Alt-svc stands for alternative servives and is for custom service. ->quic (quick UDP internet connections) indicates the 
+	transporation network protocol. 443 is a port that quic uses. ma stands for max age and by default is 24 hours, ma is in 
+	seconds so 2592000 seconds is 1800 days or almost 5 years. 
+	
+Cache-Control ->private, max-age=0, must-revalidate, no-transform
+	Cache control is used to to control cahcing for both requests and responses. Private indicates that the reponse is only intended for
+	one person and a shared cache cannot store the info, but a private cache can. max-age indicates how old the cache info can be 
+	setting it equal to zero is saying the request must get new infomation. Must-revalidate tells the cache to ping the server and see
+	if there is newer information if the data is stale it willget the data from the server. no-transform makes it so that the content 
+	being retrieve cannot be modified by a proxy.
+
+Content-Length ->4237
+	Indicates the length of the entity body and the number given is in bytes.
+	
+Content-Type ->application/json; charset=UTF-8
+	Indicates the type of media in the entity body. The data type in this case is JSON. UTF-8 is the encoding used for the entity body.
+
+Date ->Sun, 29 Jan 2017 03:07:21 GMT
+	This is the date that the message was sent
+
+ETag ->"vFp1TYDMppbWxVi0Wgw_upD83cI/xZYPa-MgMNQhd2W9gEElDa0cYnM"
+	The etag is used for web cache validation.
+
+Expires ->Sun, 29 Jan 2017 03:07:21 GMT
+	Gives the experation of the of the response in this case it is the same time as the date becasue the max-age of the cache-control is
+	zero/
+
+Server ->GSE
+	Name of the server
+
+Vary ->Origin
+	Vary is used to determine whether a cache is permitted to use the reponse for any subsequent requests without revalidation origin is
+	telling the http that the data must be retrieved from the origin.
+
+Vary ->X-Origin
+	Vary does the same thing as the vary above but I counld not find any information of the x-vary
+		
+X-Content-Type-Options ->nosniff
+	This will prevent the browser from doing MINE-type sniffing
+
+X-Frame-Options ->SAMEORIGIN
+	This page can only be displayed in a frame on the same origin as the page itself. Prevents click jacking
+
+X-XSS-Protection ->1; mode=block
+	This header forces XSS protection.
